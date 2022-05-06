@@ -92,6 +92,7 @@ def nmap_scan(ip_port, index):
         nm = nmap.PortScanner()
         ret = nm.scan(ip, port, arguments='-n -Pn -sS -sV')
         service = ret['scan'][ip]['tcp'][int(port)]['name']
+        service = service.replace(':', '：')
         msg = '{}:{}:{}:{}'.format(index, ip, port, service)
         print(msg)
         return msg
